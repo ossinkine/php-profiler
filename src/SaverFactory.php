@@ -31,10 +31,11 @@ final class SaverFactory
                     'uri' => null,
                     'token' => null,
                     'timeout' => 3,
+                    'compress' => false,
                 );
                 $userConfig = isset($config['save.handler.upload']) && is_array($config['save.handler.upload']) ? $config['save.handler.upload'] : array();
                 $saverConfig = array_merge($defaultConfig, $userConfig);
-                $saver = new Saver\UploadSaver($saverConfig['uri'], $saverConfig['token'], $saverConfig['timeout']);
+                $saver = new Saver\UploadSaver($saverConfig['uri'], $saverConfig['token'], $saverConfig['timeout'], $saverConfig['compress']);
                 break;
 
             case Profiler::SAVER_STACK:
